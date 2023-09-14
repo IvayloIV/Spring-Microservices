@@ -1,0 +1,5 @@
+group 'com.soft2run.stomp'
+
+bootJar {
+    mainClass = 'com.soft2run.stomp.SocketDemoApplication'
+}

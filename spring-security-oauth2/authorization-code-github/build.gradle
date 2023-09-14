@@ -1,0 +1,5 @@
+group 'com.soft2run.github'
+
+bootJar {
+    mainClass = 'com.soft2run.github.Main'
+}

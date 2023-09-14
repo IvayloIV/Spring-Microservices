@@ -1,0 +1,16 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package com.soft2run.grpc.contacts;
+
+message PingRequest {
+  string firstName = 1;
+  string lastName = 2;
+}
+
+message PongResponse {
+  string greeting = 1;
+}
+
+service PingPongService {
+  rpc ping (PingRequest) returns (PongResponse);
+}

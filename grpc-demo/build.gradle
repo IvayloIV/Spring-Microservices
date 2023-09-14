@@ -1,0 +1,126 @@
+plugins {
+	id 'java'
+	id 'maven-publish'
+	id 'org.springframework.boot' version '2.7.14-SNAPSHOT'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'com.google.protobuf' version '0.8.14'
+}
+
+subprojects {
+	apply plugin: 'java'
+
+	java {
+		sourceCompatibility = '17'
+	}
+
+	group = 'com.soft2run'
+	version = '0.0.1-SNAPSHOT'
+
+	repositories {
+		mavenLocal()
+		mavenCentral()
+		maven { url 'https://repo.spring.io/milestone' }
+		maven { url 'https://repo.spring.io/snapshot' }
+	}
+}
+
+project(':contract') {
+	apply plugin: 'com.google.protobuf'
+	apply plugin: 'maven-publish'
+
+	dependencies {
+		implementation 'net.devh:grpc-client-spring-boot-starter:2.14.0.RELEASE'
+	}
+
+	protobuf {
+		generatedFilesBaseDir = "$buildDir/gen-src"
+		protoc {
+			artifact = 'com.google.protobuf:protoc:3.10.1'
+		}
+
+		plugins {
+			grpc {
+				artifact = 'io.grpc:protoc-gen-grpc-java:1.25.0'
+			}
+		}
+
+		generateProtoTasks {
+			all()*.plugins {
+				grpc {}
+			}
+		}
+	}
+
+	publishing {
+		publications {
+			mmavenJava(MavenPublication) {
+				from components.java
+
+				versionMapping {
+					usage('java-api') {
+						fromResolutionOf('runtimeClasspath')
+					}
+					usage('java-runtime') {
+						fromResolutionResult()
+					}
+				}
+			}
+		}
+		repositories {
+			mavenLocal()
+		}
+	}
+}
+
+project(':server') {
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+
+	dependencies {
+		implementation 'org.springframework.boot:spring-boot-starter'
+		compileOnly 'org.projectlombok:lombok'
+		annotationProcessor 'org.projectlombok:lombok'
+		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+		implementation 'com.soft2run.grpc.contract:contract:1.0.1'
+		implementation 'net.devh:grpc-server-spring-boot-starter:2.14.0.RELEASE'
+	}
+
+	configurations {
+		compileOnly {
+			extendsFrom annotationProcessor
+		}
+	}
+
+	tasks.named('test') {
+		useJUnitPlatform()
+	}
+}
+
+project(':client') {
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+
+	dependencies {
+		implementation 'org.springframework.boot:spring-boot-starter-web'
+		compileOnly 'org.projectlombok:lombok'
+		annotationProcessor 'org.projectlombok:lombok'
+		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+		implementation 'com.soft2run.grpc.contract:contract:1.0.1'
+		compileOnly 'net.devh:grpc-client-spring-boot-starter:2.14.0.RELEASE'
+	}
+
+	configurations {
+		compileOnly {
+			extendsFrom annotationProcessor
+		}
+	}
+
+	tasks.named('test') {
+		useJUnitPlatform()
+	}
+}
+
+bootJar.enabled = false
+jar.enabled = false

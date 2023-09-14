@@ -1,0 +1,5 @@
+group 'com.soft2run.keycloak.resourceconsumer'
+
+bootJar {
+    mainClass = 'com.soft2run.keycloak.resourceconsumer.Main'
+}

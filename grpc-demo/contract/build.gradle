@@ -1,0 +1,5 @@
+group 'com.soft2run.grpc.contract'
+version '1.0.1'
+
+jar.enabled = true
+jar.archiveBaseName = 'ping-pong'

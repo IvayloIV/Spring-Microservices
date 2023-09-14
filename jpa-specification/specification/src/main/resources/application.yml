@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:3308/customer?createDatabaseIfNotExist=true
+    username: postgres
+    password: 1234
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      ddl-auto: none
+      use-new-id-generator-mappings: false

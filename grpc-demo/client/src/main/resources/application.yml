@@ -1,0 +1,5 @@
+grpc:
+  client:
+    ping-pong-service:
+      address: static://localhost:9090
+      negotiation-type: plaintext

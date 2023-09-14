@@ -1,0 +1,6 @@
+rootProject.name = 'oauth2-demo'
+include 'authorization-code-github'
+include 'authorization-code-keycloak-client'
+include 'authorization-code-keycloak-resource-server'
+include 'authorization-code-keycloak-resource-consumer'
+include 'client-credentials-keycloak'

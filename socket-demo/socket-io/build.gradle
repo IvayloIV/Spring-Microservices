@@ -1,0 +1,5 @@
+group 'com.soft2run.socketio'
+
+bootJar {
+    mainClass = 'com.soft2run.socketio.SocketDemoApplication'
+}

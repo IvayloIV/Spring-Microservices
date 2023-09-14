@@ -1,0 +1,4 @@
+rootProject.name = 'jpa-specification'
+include 'specification'
+include 'querydsl'
+

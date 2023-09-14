@@ -1,0 +1,60 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.11'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+sourceCompatibility = 17
+
+allprojects {
+	group = 'com.soft2ride'
+	version = '0.0.1-SNAPSHOT'
+}
+
+bootJar.enabled = false
+jar.enabled = false
+
+repositories {
+	mavenCentral()
+}
+
+subprojects {
+	apply plugin: 'java'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+
+	sourceCompatibility = 17
+
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+		implementation 'org.springframework.boot:spring-boot-starter-web'
+		compileOnly 'org.projectlombok:lombok'
+		runtimeOnly 'org.postgresql:postgresql'
+		annotationProcessor 'org.projectlombok:lombok'
+		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	}
+
+	tasks.named('test') {
+		useJUnitPlatform()
+	}
+}
+
+project(':specification') {
+
+	dependencies {
+		annotationProcessor("org.hibernate:hibernate-jpamodelgen:5.6.15.Final")
+	}
+}
+
+project(':querydsl') {
+
+	dependencies {
+        implementation("com.querydsl:querydsl-jpa:5.0.0")
+        annotationProcessor("com.querydsl:querydsl-apt:5.0.0:jpa")
+        annotationProcessor("org.springframework.boot:spring-boot-starter-data-jpa")
+	}
+}

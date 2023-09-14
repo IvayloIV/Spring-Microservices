@@ -1,0 +1,5 @@
+group 'com.soft2run.websocket'
+
+bootJar {
+    mainClass = 'com.soft2run.websocket.SocketDemoApplication'
+}

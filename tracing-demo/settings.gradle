@@ -1,0 +1,4 @@
+rootProject.name = 'tracing-demo'
+include 'vehicle'
+include 'station'
+include 'gateway'

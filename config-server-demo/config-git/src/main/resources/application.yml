@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    config:
+      server:
+        encrypt:
+          enabled: false
+        git:
+          uri: https://github.com/IvayloIV/Config-server-properties
+          search-paths:
+            - app*
+
+encrypt:
+  key: 1234

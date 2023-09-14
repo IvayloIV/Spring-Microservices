@@ -1,0 +1,14 @@
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuerUri: http://localhost:5556/auth/realms/test
+        registration:
+          keycloak:
+            redirectUri: http://localhost:8080/login/oauth2/code/keycloak
+            clientId: station
+            clientSecret: ${KEYCLOAK_CLIENT_SECRET}
+            authorizationCode: authorization_code
+            scope: email

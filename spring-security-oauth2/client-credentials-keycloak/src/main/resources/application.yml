@@ -1,0 +1,13 @@
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            tokenUri: http://localhost:5556/auth/realms/test/protocol/openid-connect/token
+        registration:
+          keycloak:
+            clientId: station-client-credential
+            clientSecret: ${KEYCLOAK_CLIENT_SECRET}
+            authorizationGrantType: client_credentials
+            scope: test-scope

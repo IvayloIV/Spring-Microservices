@@ -1,0 +1,5 @@
+group 'com.soft2run.gateway'
+
+bootJar {
+    mainClass = 'com.soft2run.gateway.GatewayApplication'
+}

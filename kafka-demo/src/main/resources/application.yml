@@ -1,0 +1,29 @@
+server:
+  port: 8081
+
+keycloak:
+  auth-server-url: http://localhost:5556/auth
+  realm: mytest
+  resource: myclient
+  credentials:
+    secret: ${KEYCLOAK_SECRET}
+  bearer-only: true
+  public-client: true
+  security-constraints:
+    - auth-roles:
+        - spring-role
+      security-collections:
+        - name:
+          patterns:
+            - /user/*
+    - auth-roles:
+        - spring-admin
+      security-collections:
+        - name:
+          patterns:
+            - /user/*
+            - /admin/*
+
+logging:
+  level:
+    org.keycloak: TRACE

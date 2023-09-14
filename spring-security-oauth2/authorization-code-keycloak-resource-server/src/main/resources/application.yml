@@ -1,0 +1,10 @@
+server:
+  port: 8081
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:5556/auth/realms/test
+          jwk-set-uri: http://localhost:5556/auth/realms/test/protocol/openid-connect/certs

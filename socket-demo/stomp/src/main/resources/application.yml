@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: ride-api-gateway
+
+server:
+  port: 8084
+  servlet:
+    context-path: /ride-gateway/
+  tomcat:
+    connection-timeout: 6000
+
+ride:
+  allowed:
+    origin: http://localhost:4200
