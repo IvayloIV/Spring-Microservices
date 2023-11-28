@@ -1,0 +1,10 @@
+group 'com.soft2run.dataflow.task'
+
+bootJar {
+    mainClass = 'com.soft2run.dataflow.task.TaskApplication'
+    archiveFileName = "calculator-${version}.${archiveExtension.get()}"
+}
+
+jar {
+    enabled = false
+}

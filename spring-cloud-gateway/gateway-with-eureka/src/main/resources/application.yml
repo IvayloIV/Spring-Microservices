@@ -1,0 +1,39 @@
+server:
+  port: 7998
+
+eureka:
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${random.int}
+  client:
+    registerWithEureka: false
+    fetchRegistry: true
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: get_station_v1
+          uri: lb://station
+          predicates:
+            - Method=GET
+            - Path=/v1/station/{id}
+          filters:
+            - SetPath=/station/{id}
+        - id: get_station_v2
+          uri: lb://station
+          predicates:
+            - Method=GET
+            - Path=/v2/station/{id}
+          filters:
+            - SetPath=/station/{id}
+        - id: get_vehicle
+          uri: lb://vehicle
+          predicates:
+            - Method=GET
+            - Path=/vehicle/{id}

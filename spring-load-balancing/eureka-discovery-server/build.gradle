@@ -1,0 +1,5 @@
+group 'com.soft2run.discovery.server'
+
+bootJar {
+    mainClass = 'com.soft2run.discovery.server.EurekaServerApplication'
+}

@@ -1,0 +1,6 @@
+rootProject.name = 'spring-load-balancing'
+include 'vehicle-without-eureka'
+include 'station-without-eureka'
+include 'eureka-discovery-server'
+include 'vehicle-with-eureka'
+include 'station-with-eureka'

@@ -1,0 +1,5 @@
+group 'com.soft2run.kafka.consumer'
+
+bootJar {
+    mainClass = 'com.soft2run.kafka.consumer.KafkaApplication'
+}

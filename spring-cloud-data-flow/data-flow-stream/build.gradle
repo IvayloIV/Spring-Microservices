@@ -1,0 +1,10 @@
+group 'com.soft2run.dataflow.stream'
+
+bootJar {
+    mainClass = 'com.soft2run.dataflow.stream.StreamApplication'
+    archiveFileName = "older-${version}.${archiveExtension.get()}"
+}
+
+jar {
+    enabled = false
+}

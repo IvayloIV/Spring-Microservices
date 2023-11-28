@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: rabbit-stream
+  cloud:
+    stream:
+      bindings:
+        produceStation-out-0:
+          destination: station-topic
+          content-type: application/json
+#          producer:
+#            partition-key-expression: headers.version
+#            partition-count: 2
+        produceStations-out-0:
+          destination: station-topic
+          content-type: application/json
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5568
+    username: admin
+    password: 1234

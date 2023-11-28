@@ -1,0 +1,5 @@
+group 'com.soft2run.rabbit.producer'
+
+bootJar {
+    mainClass = 'com.soft2run.rabbit.producer.RabbitApplication'
+}

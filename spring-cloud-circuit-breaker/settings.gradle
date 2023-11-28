@@ -1,0 +1,5 @@
+rootProject.name = 'spring-cloud-circuit-breaker'
+include 'eureka-discovery-server'
+include 'vehicle'
+include 'station'
+

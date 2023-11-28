@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: dataflow-task
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://postgresdb/dataflow
+    username: postgres
+    password: 1234
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      ddl-auto: none
+      use-new-id-generator-mappings: false

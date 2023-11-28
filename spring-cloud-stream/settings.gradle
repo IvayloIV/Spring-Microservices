@@ -1,0 +1,14 @@
+pluginManagement {
+	repositories {
+		maven { url 'https://repo.spring.io/milestone' }
+		maven { url 'https://repo.spring.io/snapshot' }
+		gradlePluginPortal()
+	}
+}
+rootProject.name = 'spring-cloud-stream'
+include 'rabbit-stream-producer'
+include 'rabbit-stream-consumer'
+include 'rabbit-stream-integration'
+include 'kafka-stream-producer'
+include 'kafka-stream-consumer'
+

@@ -1,0 +1,42 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: station
+
+eureka:
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${random.int}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+
+management:
+  endpoint:
+    health:
+      showDetails: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  health:
+    circuitbreakers:
+      enabled: true
+
+resilience4j:
+  timelimiter:
+    instances:
+      vehicle-breaker:
+        timeoutDuration: '6s'
+  circuitbreaker:
+    instances:
+      vehicle-breaker:
+        slidingWindowSize: 3
+        windowType: 'COUNT_BASED'
+        callRateThreshold: 50
+        minimumNumberOfCalls: 3
+        slowCallDurationThreshold: 3000
+        waitDurationInOpenState: 10000
+        registerHealthIndicator: true

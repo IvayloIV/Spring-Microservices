@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: station
+
+eureka:
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${random.int}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

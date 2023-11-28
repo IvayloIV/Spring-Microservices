@@ -1,0 +1,35 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: kafka-stream
+  cloud:
+#    function:
+#      routing-expression: "headers['version'] == 1 ? 'consumeStationV1' : 'consumeStationV2'"
+    stream:
+#      instance-count: 2
+#      instance-index: 0
+      bindings:
+        consumeStation-in-0:
+          destination: station-topic
+          content-type: application/json
+          group: station-group
+#          consumer:
+#            partitioned: true
+        processStation-in-0:
+          destination: station-topic
+          content-type: application/json
+        processStation-out-0:
+          destination: mytest
+          content-type: application/json
+#        functionRouter-in-0:
+#          destination: station-topic
+#          content-type: application/json
+#      function:
+#        routing:
+#          enabled: true
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      auto-offset-reset: earliest

@@ -1,0 +1,5 @@
+rootProject.name = 'spring-cloud-eureka'
+include 'eureka-discovery-server'
+include 'vehicle'
+include 'station'
+
